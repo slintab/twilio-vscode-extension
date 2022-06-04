@@ -1,0 +1,186 @@
+{
+  "Create a message": {
+    "prefix": "Twilio SMS: Create a message",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages\n      .create({from: '+15017122661', body: 'Hi there', to: '+15558675310'})\n      .then(message => console.log(message.sid));"
+  },
+  "Create a WhatsApp Message": {
+    "prefix": "Twilio SMS: Create a WhatsApp Message",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages\n  .create({\n     body: 'This is a message that I want to send over WhatsApp with Twilio!',\n     from: 'whatsapp:+14155238886',\n     to: 'whatsapp:+15005550006'\n   })\n  .then(message => console.log(message.sid));"
+  },
+  "Create a message and specify a StatusCallback URL": {
+    "prefix": "Twilio SMS: Create a message and specify a StatusCallback URL",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages\n      .create({\n         body: 'McAvoy or Stewart? These timelines can get so confusing.',\n         from: '+15017122661',\n         statusCallback: 'https://abc1234.free.beeceptor.com',\n         to: '+15558675310'\n       })\n      .then(message => console.log(message.sid));\n"
+  },
+  "Schedule a message": {
+    "prefix": "Twilio SMS: Schedule a message",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages\n      .create({\n         messagingServiceSid: 'MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',\n         body: 'This is a scheduled message',\n         sendAt: new Date(Date.UTC(2021, 10, 30, 20, 36, 27)),\n         scheduleType: 'fixed',\n         statusCallback: 'https://webhook.site/xxxxx',\n         to: '+15558675310'\n       })\n      .then(message => console.log(message.sid));"
+  },
+  "Schedule a message with an Image URL": {
+    "prefix": "Twilio SMS: Schedule a message with an Image URL",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages\n  .create({\n     messagingServiceSid: 'MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',\n     body: 'This is a scheduled message with an image url',\n     mediaUrl: ['https://c1.staticflickr.com/3/2899/14341091933_1e92e62d12_b.jpg'],\n     sendAt: new Date(Date.UTC(2021, 10, 30, 20, 36, 27)),\n     scheduleType: 'fixed',\n     statusCallback: 'https://webhook.site/xxxxx',\n     to: '+15558675310'\n   })\n  .then(message => console.log(message.sid));\n"
+  },
+  "Schedule a WhatsApp message": {
+    "prefix": "Twilio SMS: Schedule a WhatsApp message",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages\n      .create({\n         messagingServiceSid: 'MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',\n         body: 'This is a scheduled WhatsApp message',\n         sendAt: new Date(Date.UTC(2021, 10, 30, 20, 36, 27)),\n         scheduleType: 'fixed',\n         statusCallback: 'https://webhook.site/xxxxx',\n         to: 'whatsapp:+15558675310'\n       })\n      .then(message => console.log(message.sid));\n"
+  },
+  "Fetch Message": {
+    "prefix": "Twilio SMS: Fetch Message",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages('MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .fetch()\n      .then(message => console.log(message.to));"
+  },
+  "Read: List all messages": {
+    "prefix": "Twilio SMS: Read: List all messages",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages.list({limit: 20})\n               .then(messages => messages.forEach(m => console.log(m.sid)));\n"
+  },
+  "Read: List messages matching filter criteria": {
+    "prefix": "Twilio SMS: Read: List messages matching filter criteria",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages\n      .list({\n         dateSent: new Date(Date.UTC(2016, 7, 31, 0, 0, 0)),\n         from: '+15017122661',\n         to: '+15558675310',\n         limit: 20\n       })\n      .then(messages => messages.forEach(m => console.log(m.sid)));\n"
+  },
+  "Read: List messages (filter by 'before sent' date)": {
+    "prefix": "Twilio SMS: Read: List messages (filter by 'before sent' date)",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages\n      .list({\n         dateSentBefore: new Date(Date.UTC(2019, 2, 1, 0, 0, 0)),\n         limit: 20\n       })\n      .then(messages => messages.forEach(m => console.log(m.sid)));"
+  },
+  "Read: List messages (filter by a period of time)": {
+    "prefix": "Twilio SMS: Read: List messages (filter by a period of time)",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages\n      .list({\n         dateSentAfter: new Date(Date.UTC(2021, 0, 15, 1, 23, 45)),\n         dateSentBefore: new Date(Date.UTC(2021, 0, 17, 1, 23, 45)),\n         limit: 20\n       })\n      .then(messages => messages.forEach(m => console.log(m.sid)));\n"
+  },
+  "Update: redact a message": {
+    "prefix": "Twilio SMS: Update: redact a message",
+    "body": "// Download the Node helper library from twilio.com/docs/node/install\n// These consts are your accountSid and authToken from https://www.twilio.com/console\n// To set up environmental variables, see http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient\n  .messages('MM800f449d0399ed014aae2bcc0cc2f2ec')\n  .update({ body: '' })\n  .then(message => process.stdout.write(message.body));"
+  },
+  "Cancel a scheduled message": {
+    "prefix": "Twilio SMS: Cancel a scheduled message",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages('MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .update({status: 'canceled'})\n      .then(message => console.log(message.to));"
+  },
+  "Delete Message": {
+    "prefix": "Twilio SMS: Delete Message",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages('MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX').remove();"
+  },
+  "Create Feedback": {
+    "prefix": "Twilio SMS: Create Feedback",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages('SMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .feedback\n      .create({outcome: 'confirmed'})\n      .then(feedback => console.log(feedback.messageSid));\n"
+  },
+  "Fetch Media": {
+    "prefix": "Twilio SMS: Fetch Media",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages('MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .media('MEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .fetch()\n      .then(media => console.log(media.contentType));"
+  },
+  "Read Media": {
+    "prefix": "Twilio SMS: Read Media",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages('MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .media\n      .list({limit: 20})\n      .then(media => media.forEach(m => console.log(m.sid)));"
+  },
+  "Delete Media from your account": {
+    "prefix": "Twilio SMS: Delete Media from your account",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages('MM800f449d0399ed014aae2bcc0cc2f2ec')\n      .media('ME557ce644e5ab84fa21cc21112e22c485')\n      .remove();"
+  },
+  "Fetch Messaging Prices": {
+    "prefix": "Twilio SMS: Fetch Messaging Prices",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.pricing.v1.messaging\n                 .countries('XX')\n                 .fetch()\n                 .then(country => console.log(country.url));"
+  },
+  "Read all MessageCountry resources": {
+    "prefix": "Twilio SMS: Read all MessageCountry resources",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.pricing.v1.messaging\n      .countries\n      .list({limit: 20})\n      .then(countries => countries.forEach(c => console.log(c.country)));\n"
+  },
+  "Create Service": {
+    "prefix": "Twilio Messaging: Create Service",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services\n                .create({friendlyName: 'friendly_name'})\n                .then(service => console.log(service.sid));"
+  },
+  "Fetch Service": {
+    "prefix": "Twilio Messaging: Fetch Service",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                .fetch()\n                .then(service => console.log(service.friendlyName));\n"
+  },
+  "Read Service": {
+    "prefix": "Twilio Messaging: Read Service",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services\n                .list({limit: 20})\n                .then(services => services.forEach(s => console.log(s.sid)));\n"
+  },
+  "Update Service": {
+    "prefix": "Twilio Messaging: Update Service",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                .update({friendlyName: 'friendly_name'})\n                .then(service => console.log(service.friendlyName));"
+  },
+  "Delete Service": {
+    "prefix": "Twilio Messaging: Delete Service",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX').remove();\n"
+  },
+  "Add a Phone Number to a Messaging Service": {
+    "prefix": "Twilio Messaging: Add a Phone Number to a Messaging Service",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                .phoneNumbers\n                .create({phoneNumberSid: 'PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'})\n                .then(phone_number => console.log(phone_number.sid));\n"
+  },
+  "Fetch Phone Number": {
+    "prefix": "Twilio Messaging: Fetch Phone Number",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                .phoneNumbers('PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                .fetch()\n                .then(phone_number => console.log(phone_number.sid));"
+  },
+  "Read Phone Number": {
+    "prefix": "Twilio Messaging: Read Phone Number",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .phoneNumbers\n      .list({limit: 20})\n      .then(phoneNumbers => phoneNumbers.forEach(p => console.log(p.sid)));\n"
+  },
+  "Delete Phone Number": {
+    "prefix": "Twilio Messaging: Delete Phone Number",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                .phoneNumbers('PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                .remove();"
+  },
+  "Create Short Code": {
+    "prefix": "Twilio Messaging: Create Short Code  ",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                .shortCodes\n                .create({shortCodeSid: 'SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'})\n                .then(short_code => console.log(short_code.sid));"
+  },
+  "Fetch Short Code": {
+    "prefix": "Twilio Messaging: Fetch Short Code",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                .shortCodes('SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                .fetch()\n                .then(short_code => console.log(short_code.sid));\n"
+  },
+  "Read Short Code": {
+    "prefix": "Twilio Messaging: Read Short Code",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .shortCodes\n      .list({limit: 20})\n      .then(shortCodes => shortCodes.forEach(s => console.log(s.sid)));\n"
+  },
+  "Delete Short Code": {
+    "prefix": "Twilio Messaging: Delete Short Code",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                .shortCodes('SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                .remove();"
+  },
+  "Create: an Alpha Sender": {
+    "prefix": "Twilio Messaging: Create: an Alpha Sender",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MG2172dd2db502e20dd981ef0d67850e1a')\n                .alphaSenders\n                .create({alphaSender: 'My company'})\n                .then(alpha_sender => console.log(alpha_sender.sid));\n"
+  },
+  "Fetch an Alpha Sender": {
+    "prefix": "Twilio Messaging: Fetch an Alpha Sender",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MG2172dd2db502e20dd981ef0d67850e1a')\n                .alphaSenders('AIc781610ec0b3400c9e0cab8e757da937')\n                .fetch()\n                .then(alpha_sender => console.log(alpha_sender.sid));\n"
+  },
+  "Read Alpha Senders": {
+    "prefix": "Twilio Messaging: Read Alpha Senders",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MG2172dd2db502e20dd981ef0d67850e1a')\n      .alphaSenders\n      .list({limit: 20})\n      .then(alphaSenders => alphaSenders.forEach(a => console.log(a.sid)));\n"
+  },
+  "Delete: Remove a Alpha Sender from a Service": {
+    "prefix": "Twilio Messaging: Delete: Remove a Alpha Sender from a Service",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MG2172dd2db502e20dd981ef0d67850e1a')\n                .alphaSenders('AIc781610ec0b3400c9e0cab8e757da937')\n                .remove();"
+  },
+  "Create a US A2P Campaign Use Case": {
+    "prefix": "Twilio Messaging: Create a US A2P Campaign Use Case",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                .usAppToPerson\n                .create({\n                   brandRegistrationSid: 'BNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',\n                   description: 'description',\n                   messageSamples: ['message_samples'],\n                   usAppToPersonUsecase: 'us_app_to_person_usecase',\n                   hasEmbeddedLinks: true,\n                   hasEmbeddedPhone: true\n                 })\n                .then(us_app_to_person => console.log(us_app_to_person.sid));\n"
+  },
+  "Fetch a US A2P Campaign Use Case": {
+    "prefix": "Twilio Messaging: Fetch a US A2P Campaign Use Case",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                .usAppToPerson('QEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                .fetch()\n                .then(us_app_to_person => console.log(us_app_to_person.sid));"
+  },
+  "Fetch a list of possible US A2P Campaign Use Cases": {
+    "prefix": "Twilio Messaging: Fetch a list of possible US A2P Campaign Use Cases",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .usAppToPersonUsecases\n  .fetch({brandRegistrationSid: 'BNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'})\n  .then(us_app_to_person_usecase => console.log(us_app_to_person_usecase.usAppToPersonUsecases));\n"
+  },
+  "Read a List of US A2P Campaign Use Cases": {
+    "prefix": "Twilio Messaging: Read a List of US A2P Campaign Use Cases",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .usAppToPerson\n      .list({limit: 20})\n      .then(usAppToPerson => usAppToPerson.forEach(u => console.log(u.sid)));"
+  },
+  "Delete a US A2P Campaign Use Case": {
+    "prefix": "Twilio Messaging: Delete a US A2P Campaign Use Case",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                .usAppToPerson('QEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                .remove();\n"
+  },
+  "Fetch Possible US A2P Campaign Use Cases for a Messaging Service": {
+    "prefix": "Twilio Messaging: Fetch Possible US A2P Campaign Use Cases for a Messaging Service",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messaging.services('MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .usAppToPersonUsecases\n  .fetch({brandRegistrationSid: 'BNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'})\n  .then(us_app_to_person_usecase => console.log(us_app_to_person_usecase.usAppToPersonUsecases));\n"
+  },
+  "Send an outbound freeform WhatsApp Message": {
+    "prefix": "Twilio WhatsApp: Send an outbound freeform WhatsApp Message",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages\n      .create({\n         from: 'whatsapp:+14155238886',\n         body: 'Hello, there!',\n         to: 'whatsapp:+15005550006'\n       })\n      .then(message => console.log(message.sid));\n"
+  },
+  "Send a freeform WhatsApp message with media": {
+    "prefix": "Twilio WhatsApp: Send a freeform WhatsApp message with media",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages\n      .create({\n         body: `Here's that picture of an owl you requested.`,\n         mediaUrl: ['https://demo.twilio.com/owl.png'],\n         from: 'whatsapp:+14155238886',\n         to: 'whatsapp:+15017122661'\n       })\n      .then(message => console.log(message.sid));\n"
+  },
+  "Send a WhatsApp Message and specify a StatusCallback URL": {
+    "prefix": "Twilio WhatsApp: Send a WhatsApp Message and specify a StatusCallback URL",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.messages\n      .create({\n         from: 'whatsapp:+14155238886',\n         body: 'Hey, I just met you, and this is crazy...',\n         statusCallback: 'http://postb.in/1234abcd',\n         to: 'whatsapp:+15005550006'\n       })\n      .then(message => console.log(message.sid));\n"
+  }
+}

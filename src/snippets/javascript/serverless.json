@@ -1,0 +1,386 @@
+{
+  "Create Service": {
+    "prefix": "Twilio Runtime: Create Service",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services\n                 .create({\n                    includeCredentials: true,\n                    uniqueName: 'my-new-app',\n                    friendlyName: 'My New App'\n                  })\n                 .then(service => console.log(service.sid));\n"
+  },
+  "Fetch Service": {
+    "prefix": "Twilio Runtime: Fetch Service",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .fetch()\n                 .then(service => console.log(service.friendlyName));\n"
+  },
+  "Read Service": {
+    "prefix": "Twilio Runtime: Read Service",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services\n                 .list({limit: 20})\n                 .then(services => services.forEach(s => console.log(s.sid)));\n"
+  },
+  "Update Service": {
+    "prefix": "Twilio Runtime: Update Service",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .update({includeCredentials: true})\n                 .then(service => console.log(service.friendlyName));\n"
+  },
+  "Delete Service": {
+    "prefix": "Twilio Runtime: Delete Service",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX').remove();\n"
+  },
+  "Create Function": {
+    "prefix": "Twilio Runtime: Create Function",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .functions\n                 .create({friendlyName: 'friendly_name'})\n                 .then(function_ => console.log(function_.sid));\n"
+  },
+  "Fetch Function": {
+    "prefix": "Twilio Runtime: Fetch Function",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .functions('ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .fetch()\n                 .then(function_ => console.log(function_.friendlyName));\n"
+  },
+  "Read Function": {
+    "prefix": "Twilio Runtime: Read Function",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .functions\n      .list({limit: 20})\n      .then(functions => functions.forEach(f => console.log(f.sid)));\n"
+  },
+  "Update Function": {
+    "prefix": "Twilio Runtime: Update Function",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .functions('ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .update({friendlyName: 'friendly_name'})\n                 .then(function_ => console.log(function_.friendlyName));\n"
+  },
+  "Delete Function": {
+    "prefix": "Twilio Runtime: Delete Function",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .functions('ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .remove();\n"
+  },
+  "Fetch a Function Version resource": {
+    "prefix": "Twilio Runtime: Fetch a Function Version resource",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .functions('ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .functionVersions('ZNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .fetch()\n                 .then(function_version => console.log(function_version.sid));\n"
+  },
+  "Read multiple Function Version resources": {
+    "prefix": "Twilio Runtime: Read multiple Function Version resources",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .functions('ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .functionVersions\n  .list({limit: 20})\n  .then(functionVersions => functionVersions.forEach(f => console.log(f.sid)));\n"
+  },
+  "Fetch Function Version Content": {
+    "prefix": "Twilio Runtime: Fetch Function Version Content",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .functions('ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .functionVersions('ZNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .functionVersionContent()\n  .fetch()\n  .then(function_version_content => console.log(function_version_content.sid));\n"
+  },
+  "Create Asset": {
+    "prefix": "Twilio Runtime: Create Asset",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .assets\n                 .create({friendlyName: 'friendly_name'})\n                 .then(asset => console.log(asset.sid));\n"
+  },
+  "Fetch Asset": {
+    "prefix": "Twilio Runtime: Fetch Asset",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .assets('ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .fetch()\n                 .then(asset => console.log(asset.friendlyName));\n"
+  },
+  "Read Asset": {
+    "prefix": "Twilio Runtime: Read Asset",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .assets\n                 .list({limit: 20})\n                 .then(assets => assets.forEach(a => console.log(a.sid)));\n"
+  },
+  "Update Asset": {
+    "prefix": "Twilio Runtime: Update Asset",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .assets('ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .update({friendlyName: 'friendly_name'})\n                 .then(asset => console.log(asset.friendlyName));\n"
+  },
+  "Delete Asset": {
+    "prefix": "Twilio Runtime: Delete Asset",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .assets('ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .remove();\n"
+  },
+  "Fetch an Asset Version resource": {
+    "prefix": "Twilio Runtime: Fetch an Asset Version resource",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .assets('ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .assetVersions('ZNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .fetch()\n                 .then(asset_version => console.log(asset_version.sid));\n"
+  },
+  "Read multiple Asset Version resources": {
+    "prefix": "Twilio Runtime: Read multiple Asset Version resources",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .assets('ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .assetVersions\n      .list({limit: 20})\n      .then(assetVersions => assetVersions.forEach(a => console.log(a.sid)));\n"
+  },
+  "Create Variable": {
+    "prefix": "Twilio Runtime: Create Variable",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .environments('ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .variables\n                 .create({key: 'key', value: 'value'})\n                 .then(variable => console.log(variable.sid));\n"
+  },
+  "Fetch Variable": {
+    "prefix": "Twilio Runtime: Fetch Variable",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .environments('ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .variables('ZVXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .fetch()\n                 .then(variable => console.log(variable.sid));\n"
+  },
+  "Read Variable": {
+    "prefix": "Twilio Runtime: Read Variable",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .environments('ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .variables\n      .list({limit: 20})\n      .then(variables => variables.forEach(v => console.log(v.sid)));\n"
+  },
+  "Update Variable": {
+    "prefix": "Twilio Runtime: Update Variable",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .environments('ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .variables('ZVXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .update({key: 'key'})\n                 .then(variable => console.log(variable.sid));\n"
+  },
+  "Delete Variable": {
+    "prefix": "Twilio Runtime: Delete Variable",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .environments('ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .variables('ZVXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .remove();\n"
+  },
+  "Create a Build": {
+    "prefix": "Twilio Runtime: Create a Build",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .builds\n                 .create({\n                    functionVersions: ['ZNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'],\n                    assetVersions: ['ZNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX']\n                  })\n                 .then(build => console.log(build.sid));\n"
+  },
+  "Create a Build and specify Dependencies": {
+    "prefix": "Twilio Runtime: Create a Build and specify Dependencies",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .builds\n  .create({\n     functionVersions: ['ZNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'],\n     dependencies: `[{\"name\":\"twilio\",\"version\":\"3.71.2\"},{\"name\":\"@twilio/runtime-handler\",\"version\":\"1.2.1\"}]`\n   })\n  .then(build => console.log(build.dependencies));\n"
+  },
+  "Create a build with a specific Node.js runtime": {
+    "prefix": "Twilio Runtime: Create a build with a specific Node.js runtime",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .builds\n                 .create({\n                    functionVersions: ['ZNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'],\n                    runtime: 'node14'\n                  })\n                 .then(build => console.log(build.sid));\n"
+  },
+  "Fetch Build": {
+    "prefix": "Twilio Runtime: Fetch Build",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .builds('ZBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .fetch()\n                 .then(build => console.log(build.sid));\n"
+  },
+  "Read Build": {
+    "prefix": "Twilio Runtime: Read Build",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .builds\n                 .list({limit: 20})\n                 .then(builds => builds.forEach(b => console.log(b.sid)));\n"
+  },
+  "Delete Build": {
+    "prefix": "Twilio Runtime: Delete Build",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .builds('ZBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .remove();\n"
+  },
+  "Fetch Build Status": {
+    "prefix": "Twilio Runtime: Fetch Build Status",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .builds('ZBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .buildStatus()\n                 .fetch()\n                 .then(build_status => console.log(build_status.sid));\n"
+  },
+  "Create Environment": {
+    "prefix": "Twilio Runtime: Create Environment",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .environments\n                 .create({domainSuffix: 'stage', uniqueName: 'staging'})\n                 .then(environment => console.log(environment.domainName));\n"
+  },
+  "Fetch Environment": {
+    "prefix": "Twilio Runtime: Fetch Environment",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .environments('ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .fetch()\n                 .then(environment => console.log(environment.uniqueName));\n"
+  },
+  "Read Environment": {
+    "prefix": "Twilio Runtime: Read Environment",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .environments\n      .list({limit: 20})\n      .then(environments => environments.forEach(e => console.log(e.sid)));\n"
+  },
+  "Delete Environment": {
+    "prefix": "Twilio Runtime: Delete Environment",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .environments('ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .remove();\n"
+  },
+  "Create a Deployment": {
+    "prefix": "Twilio Runtime: Create a Deployment",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .environments('ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .deployments\n                 .create({buildSid: 'ZBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'})\n                 .then(deployment => console.log(deployment.sid));\n"
+  },
+  "Clear all Deployments from an Environment": {
+    "prefix": "Twilio Runtime: Clear all Deployments from an Environment",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .environments('ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .deployments\n                 .create()\n                 .then(deployment => console.log(deployment.sid));\n"
+  },
+  "Fetch Deployment": {
+    "prefix": "Twilio Runtime: Fetch Deployment",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .environments('ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .deployments('ZDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .fetch()\n                 .then(deployment => console.log(deployment.sid));\n"
+  },
+  "Read Deployment": {
+    "prefix": "Twilio Runtime: Read Deployment",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .environments('ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .deployments\n      .list({limit: 20})\n      .then(deployments => deployments.forEach(d => console.log(d.sid)));\n"
+  },
+  "Fetch Log": {
+    "prefix": "Twilio Runtime: Fetch Log",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .environments('ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .logs('NOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .fetch()\n                 .then(log => console.log(log.sid));\n"
+  },
+  "Read Log": {
+    "prefix": "Twilio Runtime: Read Log",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.serverless.services('ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .environments('ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n                 .logs\n                 .list({limit: 20})\n                 .then(logs => logs.forEach(l => console.log(l.sid)));\n"
+  },
+  "Create a Document using the REST API": {
+    "prefix": "Twilio Runtime: Create a Document using the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .documents\n           .create({uniqueName: 'user_prefs'})\n           .then(document => console.log(document.sid));\n"
+  },
+  "Fetch a Document using the REST API": {
+    "prefix": "Twilio Runtime: Fetch a Document using the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .documents('ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .fetch()\n           .then(document => console.log(document.uniqueName));\n"
+  },
+  "Retrieve all Documents using the REST API": {
+    "prefix": "Twilio Runtime: Retrieve all Documents using the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .documents\n           .list({limit: 20})\n           .then(documents => documents.forEach(d => console.log(d.sid)));\n"
+  },
+  "Update a Document using the REST API": {
+    "prefix": "Twilio Runtime: Update a Document using the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .documents('ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .update({data: {}})\n           .then(document => console.log(document.uniqueName));\n"
+  },
+  "Delete a Document using the REST API": {
+    "prefix": "Twilio Runtime: Delete a Document using the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .documents('ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .remove();\n"
+  },
+  "Create Sync List": {
+    "prefix": "Twilio Runtime: Create Sync List",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncLists\n           .create()\n           .then(sync_list => console.log(sync_list.sid));\n"
+  },
+  "Fetch Sync List": {
+    "prefix": "Twilio Runtime: Fetch Sync List",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncLists('ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .fetch()\n           .then(sync_list => console.log(sync_list.uniqueName));\n"
+  },
+  "Read Sync List": {
+    "prefix": "Twilio Runtime: Read Sync List",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncLists\n           .list({limit: 20})\n           .then(syncLists => syncLists.forEach(s => console.log(s.sid)));\n"
+  },
+  "Update Sync List": {
+    "prefix": "Twilio Runtime: Update Sync List",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncLists('ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .update({ttl: 1})\n           .then(sync_list => console.log(sync_list.uniqueName));\n"
+  },
+  "Delete a List with the REST API": {
+    "prefix": "Twilio Runtime: Delete a List with the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncLists('ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .remove();\n"
+  },
+  "Create a ListItem with the REST API": {
+    "prefix": "Twilio Runtime: Create a ListItem with the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncLists('ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncListItems\n           .create({data: {\n              text: 'hello world',\n              user: 'Charlies Xavier'\n            }})\n           .then(sync_list_item => console.log(sync_list_item.index));\n"
+  },
+  "Fetch a ListItem with the REST API": {
+    "prefix": "Twilio Runtime: Fetch a ListItem with the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncLists('ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncListItems(0)\n           .fetch()\n           .then(sync_list_item => console.log(sync_list_item.index));\n"
+  },
+  "Get ListItems using the REST API": {
+    "prefix": "Twilio Runtime: Get ListItems using the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .syncLists('ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .syncListItems\n      .list({limit: 20})\n      .then(syncListItems => syncListItems.forEach(s => console.log(s.index)));\n"
+  },
+  "Update a ListItem with the REST API": {
+    "prefix": "Twilio Runtime: Update a ListItem with the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncLists('ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncListItems(0)\n           .update({data: {\n              user: 'Wolverine'\n            }})\n           .then(sync_list_item => console.log(sync_list_item.index));\n"
+  },
+  "Delete a ListItem with the REST API": {
+    "prefix": "Twilio Runtime: Delete a ListItem with the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncLists('ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncListItems(0)\n           .remove();\n"
+  },
+  "Create a Map": {
+    "prefix": "Twilio Runtime: Create a Map",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMaps\n           .create()\n           .then(sync_map => console.log(sync_map.sid));\n"
+  },
+  "Create a Map with a unique name": {
+    "prefix": "Twilio Runtime: Create a Map with a unique name",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMaps\n           .create({uniqueName: 'my_first_map'})\n           .then(sync_map => console.log(sync_map.sid));\n"
+  },
+  "Create a Map with an expiration deadline": {
+    "prefix": "Twilio Runtime: Create a Map with an expiration deadline",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMaps\n           .create({ttl: 600})\n           .then(sync_map => console.log(sync_map.sid));\n"
+  },
+  "Fetch Sync Map": {
+    "prefix": "Twilio Runtime: Fetch Sync Map",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMaps('MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .fetch()\n           .then(sync_map => console.log(sync_map.uniqueName));\n"
+  },
+  "Read Sync Map": {
+    "prefix": "Twilio Runtime: Read Sync Map",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMaps\n           .list({limit: 20})\n           .then(syncMaps => syncMaps.forEach(s => console.log(s.sid)));\n"
+  },
+  "Update Sync Map": {
+    "prefix": "Twilio Runtime: Update Sync Map",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMaps('MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .update({ttl: 1})\n           .then(sync_map => console.log(sync_map.uniqueName));\n"
+  },
+  "Delete a Map with the REST API": {
+    "prefix": "Twilio Runtime: Delete a Map with the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMaps('MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .remove();\n"
+  },
+  "Create a MapItem with the REST API": {
+    "prefix": "Twilio Runtime: Create a MapItem with the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMaps('MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMapItems\n           .create({key: 'foo', data: {\n              name: 'Foo Bar',\n              level: 30,\n              username: 'foo_bar'\n            }})\n           .then(sync_map_item => console.log(sync_map_item.key));\n"
+  },
+  "Fetch a MapItem with the REST API": {
+    "prefix": "Twilio Runtime: Fetch a MapItem with the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMaps('MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMapItems('foo')\n           .fetch()\n           .then(sync_map_item => console.log(sync_map_item.key));\n"
+  },
+  "Read all MapItems with the REST API": {
+    "prefix": "Twilio Runtime: Read all MapItems with the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .syncMaps('MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .syncMapItems\n      .list({limit: 20})\n      .then(syncMapItems => syncMapItems.forEach(s => console.log(s.key)));\n"
+  },
+  "Read: Query a Map with filters with the REST API": {
+    "prefix": "Twilio Runtime: Read: Query a Map with filters with the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .syncMaps('MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n      .syncMapItems\n      .list({from: 'foo', order: 'asc', limit: 20})\n      .then(syncMapItems => syncMapItems.forEach(s => console.log(s.key)));\n"
+  },
+  "Update a MapItem with the REST API": {
+    "prefix": "Twilio Runtime: Update a MapItem with the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMaps('MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMapItems('foo')\n           .update({data: {\n              name: 'FooBaz',\n              level: 31,\n              username: 'foo_baz'\n            }})\n           .then(sync_map_item => console.log(sync_map_item.key));\n"
+  },
+  "Update: Update a MapItem with Conflict Resolution with the REST API": {
+    "prefix": "Twilio Runtime: Update: Update a MapItem with Conflict Resolution with the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMaps('MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMapItems('foo')\n           .update({data: {\n              name: 'FooBaz',\n              level: 31,\n              username: 'foo_baz'\n            }, ifMatch: '1a'})\n           .then(sync_map_item => console.log(sync_map_item.revision));\n"
+  },
+  "Delete a MapItem with the REST API": {
+    "prefix": "Twilio Runtime: Delete a MapItem with the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMaps('MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMapItems('foo')\n           .remove();\n"
+  },
+  "Delete: Delete a MapItem with Conflict Resolution using the REST API": {
+    "prefix": "Twilio Runtime: Delete: Delete a MapItem with Conflict Resolution using the REST API",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMaps('MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMapItems('foo')\n           .remove({ifMatch: '1a'});\n"
+  },
+  "Fetch a Document Permission resource": {
+    "prefix": "Twilio Runtime: Fetch a Document Permission resource",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .documents('ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .documentPermissions('identity')\n  .fetch()\n  .then(document_permission => console.log(document_permission.serviceSid));\n"
+  },
+  "Read multiple Document Permission resources": {
+    "prefix": "Twilio Runtime: Read multiple Document Permission resources",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .documents('ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .documentPermissions\n  .list({limit: 20})\n  .then(documentPermissions => documentPermissions.forEach(d => console.log(d.serviceSid)));\n"
+  },
+  "Update a Document Permission resource": {
+    "prefix": "Twilio Runtime: Update a Document Permission resource",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .documents('ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .documentPermissions('identity')\n  .update({read: true, write: true, manage: true})\n  .then(document_permission => console.log(document_permission.serviceSid));\n"
+  },
+  "Delete a Document Permission resource": {
+    "prefix": "Twilio Runtime: Delete a Document Permission resource",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .documents('ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .documentPermissions('identity')\n           .remove();\n"
+  },
+  "Fetch a Sync List Permission resource": {
+    "prefix": "Twilio Runtime: Fetch a Sync List Permission resource",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .syncLists('ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .syncListPermissions('identity')\n  .fetch()\n  .then(sync_list_permission => console.log(sync_list_permission.serviceSid));\n"
+  },
+  "Read multiple Sync List Permission resources": {
+    "prefix": "Twilio Runtime: Read multiple Sync List Permission resources",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .syncLists('ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .syncListPermissions\n  .list({limit: 20})\n  .then(syncListPermissions => syncListPermissions.forEach(s => console.log(s.serviceSid)));\n"
+  },
+  "Update a Sync List Permission resource": {
+    "prefix": "Twilio Runtime: Update a Sync List Permission resource",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .syncLists('ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .syncListPermissions('identity')\n  .update({read: true, write: true, manage: true})\n  .then(sync_list_permission => console.log(sync_list_permission.serviceSid));\n"
+  },
+  "Delete a Sync List Permission resource": {
+    "prefix": "Twilio Runtime: Delete a Sync List Permission resource",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncLists('ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncListPermissions('identity')\n           .remove();\n"
+  },
+  "Fetch a Sync Map Permission resource": {
+    "prefix": "Twilio Runtime: Fetch a Sync Map Permission resource",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .syncMaps('MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .syncMapPermissions('identity')\n  .fetch()\n  .then(sync_map_permission => console.log(sync_map_permission.serviceSid));\n"
+  },
+  "Read multiple Sync Map Permission resources": {
+    "prefix": "Twilio Runtime: Read multiple Sync Map Permission resources",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .syncMaps('MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .syncMapPermissions\n  .list({limit: 20})\n  .then(syncMapPermissions => syncMapPermissions.forEach(s => console.log(s.serviceSid)));\n"
+  },
+  "Update a Sync Map Permission resource": {
+    "prefix": "Twilio Runtime: Update a Sync Map Permission resource",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .syncMaps('MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .syncMapPermissions('identity')\n  .update({read: true, write: true, manage: true})\n  .then(sync_map_permission => console.log(sync_map_permission.serviceSid));\n"
+  },
+  "Delete a Sync Map Permission resource": {
+    "prefix": "Twilio Runtime: Delete a Sync Map Permission resource",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMaps('MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncMapPermissions('identity')\n           .remove();\n"
+  },
+  "Create Service resource": {
+    "prefix": "Twilio Sync: Create Service resource",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services.create().then(service => console.log(service.sid));\n"
+  },
+  "Create Service resource with a webhook URL": {
+    "prefix": "Twilio Sync: Create Service resource with a webhook URL",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services.create({webhookUrl: 'https://example.com/sync'})\n                    .then(service => console.log(service.sid));\n"
+  },
+  "Fetch Service Resource": {
+    "prefix": "Twilio Sync: Fetch Service",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .fetch()\n           .then(service => console.log(service.uniqueName));\n"
+  },
+  "Read Service Resource": {
+    "prefix": "Twilio Sync: Read Service",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services.list({limit: 20})\n           .then(services => services.forEach(s => console.log(s.sid)));\n"
+  },
+  "Update Service Resource": {
+    "prefix": "Twilio Sync: Update Service",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .update({webhookUrl: 'https://example.com'})\n           .then(service => console.log(service.uniqueName));\n"
+  },
+  "Delete Service Resource": {
+    "prefix": "Twilio Sync: Delete Service",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX').remove();\n"
+  },
+  "Create a Sync Stream resource": {
+    "prefix": "Twilio Runtime: Create a Sync Stream resource",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncStreams\n           .create()\n           .then(sync_stream => console.log(sync_stream.sid));\n"
+  },
+  "Fetch a Sync Stream resource": {
+    "prefix": "Twilio Runtime: Fetch a Sync Stream resource",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncStreams('TOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .fetch()\n           .then(sync_stream => console.log(sync_stream.uniqueName));\n"
+  },
+  "Read multiple Sync Stream resources": {
+    "prefix": "Twilio Runtime: Read multiple Sync Stream resources",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncStreams\n           .list({limit: 20})\n           .then(syncStreams => syncStreams.forEach(s => console.log(s.sid)));\n"
+  },
+  "Update a Sync Stream resource": {
+    "prefix": "Twilio Runtime: Update a Sync Stream resource",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncStreams('TOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .update({ttl: 1})\n           .then(sync_stream => console.log(sync_stream.uniqueName));\n"
+  },
+  "Delete a Sync Stream resource": {
+    "prefix": "Twilio Runtime: Delete a Sync Stream resource",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncStreams('TOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .remove();\n"
+  },
+  "Create a Stream Message resource": {
+    "prefix": "Twilio Runtime: Create a Stream Message resource",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.sync.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .syncStreams('TOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n           .streamMessages\n           .create({data: {}})\n           .then(stream_message => console.log(stream_message.sid));\n"
+  }
+}

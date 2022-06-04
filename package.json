@@ -1,0 +1,103 @@
+{
+	"name": "twilio-vscode-extension",
+	"displayName": "twilio-vscode-extension",
+	"description": "VS Code Extension for interacting with Twilio",
+	"version": "0.1.0",
+	"engines": {
+		"vscode": "^1.67.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "twilio",
+					"title": "Twilio",
+					"icon": "src/images/twilio-icon.svg"
+				}
+			]
+		},
+		"views": {
+			"twilio": [
+				{
+					"id": "codeExchange",
+					"name": "Code Exchange"
+				},
+				{
+					"id": "links",
+					"name": "Links"
+				}
+			]
+		},
+		"snippets": [
+			{
+				"language": "javascript",
+				"path": "./src/snippets/javascript/messaging.json"
+			},
+			{
+				"language": "javascript",
+				"path": "./src/snippets/javascript/serverless.json"
+			},
+			{
+				"language": "javascript",
+				"path": "./src/snippets/javascript/numbers.json"
+			}
+		],
+		"commands": [
+			{
+				"command": "twilio.open.twiliocom",
+				"title": "Twilio: Open Twilio.com"
+			},
+			{
+				"command": "twilio.open.console",
+				"title": "Twilio: Open console"
+			},
+			{
+				"command": "twilio.open.exchange",
+				"title": "Twilio: Open Code Exchange"
+			},
+			{
+				"command": "twilio.open.docs",
+				"title": "Twilio: Open documentation"
+			},
+			{
+				"command": "twilio.open.help",
+				"title": "Twilio: Open Help Center "
+			},
+			{
+				"command": "twilio.open.template",
+				"title": "Twilio: Open Code Exchange Template"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.0",
+		"@types/node": "14.x",
+		"@types/vscode": "^1.67.0",
+		"@typescript-eslint/eslint-plugin": "^5.16.0",
+		"@typescript-eslint/parser": "^5.16.0",
+		"@vscode/test-electron": "^2.1.3",
+		"eslint": "^8.16.0",
+		"glob": "^7.2.0",
+		"mocha": "^9.2.2",
+		"typescript": "^4.5.5"
+	},
+	"dependencies": {
+		"axios": "^0.27.2",
+		"github-directory-downloader": "^1.3.6"
+	}
+}

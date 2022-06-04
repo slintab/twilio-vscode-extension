@@ -1,0 +1,133 @@
+{
+  "Carrier Lookup with E.164 Formatted Number": {
+    "prefix": "Twilio: Carrier Lookup with E.164 Formatted Number",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.lookups.v1.phoneNumbers('+15108675310')\n                 .fetch({type: ['carrier']})\n                 .then(phone_number => console.log(phone_number.carrier));\n"
+  },
+  "Carrier Lookup with National Formatted Number": {
+    "prefix": "Twilio: Carrier Lookup with National Formatted Number",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.lookups.v1.phoneNumbers('(510)867-5310')\n                 .fetch({countryCode: 'US', type: ['carrier']})\n                 .then(phone_number => console.log(phone_number.carrier));\n"
+  },
+  "Caller Name Lookup": {
+    "prefix": "Twilio: Caller Name Lookup",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.lookups.v1.phoneNumbers('+15108675310')\n                 .fetch({type: ['caller-name']})\n                 .then(phone_number => console.log(phone_number.callerName));\n"
+  },
+  "Get additional caller information with Lookup and Whitepages Pro Caller ID Add-on": {
+    "prefix": "Twilio: Get additional caller information with Lookup and Whitepages Pro Caller ID Add-on",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.lookups.v1.phoneNumbers('+12127363100')\n                 .fetch({addOns: ['whitepages_pro_caller_id']})\n                 .then(phone_number => console.log(phone_number.addOns));\n"
+  },
+  "Deterministic TCPA Compliance with Lookup and the Payfone Add-on": {
+    "prefix": "Twilio: Deterministic TCPA Compliance with Lookup and the Payfone Add-on",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.lookups.v1.phoneNumbers('+16502530000')\n      .fetch({addOns: ['payfone_tcpa_compliance'], addOnsData: {\n         'payfone_tcpa_compliance.right_party_contacted_date': '20160101'\n       }, type: ['carrier']})\n      .then(phone_number => console.log(phone_number.addOns));\n"
+  },
+  "Detect Robocallers with Lookup and Nomorobo Spam Score Add-on": {
+    "prefix": "Twilio: Detect Robocallers with Lookup and Nomorobo Spam Score Add-on",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.lookups.v1.phoneNumbers('+19892008374')\n                 .fetch({addOns: ['nomorobo_spamscore']})\n                 .then(phone_number => console.log(phone_number.addOns));\n"
+  },
+  "Fetch a specific country": {
+    "prefix": "Twilio Phone Numbers: Fetch a specific country",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.availablePhoneNumbers('US')\n  .fetch()\n  .then(available_phone_number_country => console.log(available_phone_number_country.countryCode));\n"
+  },
+  "Read a list of countries": {
+    "prefix": "Twilio Phone Numbers: Read a list of countries",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.availablePhoneNumbers\n  .list({limit: 20})\n  .then(availablePhoneNumbers => availablePhoneNumbers.forEach(a => console.log(a.countryCode)));\n"
+  },
+  "Find available local phone numbers by area code": {
+    "prefix": "Twilio: Find available local phone numbers by area code",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.availablePhoneNumbers('US')\n      .local\n      .list({areaCode: 510, limit: 20})\n      .then(local => local.forEach(l => console.log(l.friendlyName)));\n"
+  },
+  "Find phone numbers by number pattern": {
+    "prefix": "Twilio: Find phone numbers by number pattern",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.availablePhoneNumbers('US')\n      .local\n      .list({contains: '510555****', limit: 20})\n      .then(local => local.forEach(l => console.log(l.friendlyName)));\n"  
+  },
+  "Find phone numbers by character pattern": {
+    "prefix": "Twilio: Find phone numbers by character pattern",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.availablePhoneNumbers('US')\n      .local\n      .list({contains: 'STORM', limit: 20})\n      .then(local => local.forEach(l => console.log(l.friendlyName)));\n"
+  },
+  "Find available phone numbers by state": {
+    "prefix": "Twilio: Find available phone numbers by state",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.availablePhoneNumbers('US')\n      .local\n      .list({inRegion: 'AR', limit: 20})\n      .then(local => local.forEach(l => console.log(l.friendlyName)));\n"
+  },
+  "Find available local phone numbers by prefix": {
+    "prefix": "Twilio: Find available local phone numbers by prefix",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.availablePhoneNumbers('GB')\n      .local\n      .list({contains: '+4420', limit: 20})\n      .then(local => local.forEach(l => console.log(l.friendlyName)));\n"
+  },
+  "Find regional phone numbers by feature": {
+    "prefix": "Twilio: Find regional phone numbers by feature",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.availablePhoneNumbers('GB')\n      .local\n      .list({smsEnabled: true, voiceEnabled: true, limit: 20})\n      .then(local => local.forEach(l => console.log(l.friendlyName)));\n"
+  },
+  "Find phone numbers without address requirements": {
+    "prefix": "Twilio: Find phone numbers without address requirements",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.availablePhoneNumbers('US')\n      .local\n      .list({excludeAllAddressRequired: true, limit: 20})\n      .then(local => local.forEach(l => console.log(l.friendlyName)));\n"
+  },
+  "Advanced list filter example": {
+    "prefix": "Twilio Phone Numbers: Advanced list filter example",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.availablePhoneNumbers('US')\n      .local\n      .list({\n         nearLatLong: '37.840699,-122.461853',\n         distance: 50,\n         contains: '555',\n         inRegion: 'CA',\n         limit: 20\n       })\n      .then(local => local.forEach(l => console.log(l.friendlyName)));\n"
+  },
+  "Find any toll-free number": {
+    "prefix": "Twilio: Find any toll-free number",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.availablePhoneNumbers('US')\n      .tollFree\n      .list({limit: 20})\n      .then(tollFree => tollFree.forEach(t => console.log(t.friendlyName)));\n"
+  },
+  "Find toll-free number by string": {
+    "prefix": "Twilio: Find toll-free number by string",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.availablePhoneNumbers('US')\n      .tollFree\n      .list({contains: '866***EPIC', limit: 20})\n      .then(tollFree => tollFree.forEach(t => console.log(t.friendlyName)));\n"
+  },
+  "Find toll-free number by pattern": {
+    "prefix": "Twilio: Find toll-free number by pattern",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.availablePhoneNumbers('US')\n      .tollFree\n      .list({areaCode: 800, contains: 'KYLO', limit: 20})\n      .then(tollFree => tollFree.forEach(t => console.log(t.friendlyName)));\n"
+  },
+  "Find mobile numbers by region": {
+    "prefix": "Twilio: Find mobile numbers by region",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.availablePhoneNumbers('GB')\n      .mobile\n      .list({limit: 20})\n      .then(mobile => mobile.forEach(m => console.log(m.friendlyName)));\n"
+  },
+  "Provision a Phone Number": {
+    "prefix": "Twilio: Provision a Phone Number",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.incomingPhoneNumbers\n      .create({phoneNumber: '+15017122661'})\n      .then(incoming_phone_number => console.log(incoming_phone_number.sid));\n"
+  },
+  "Provision a Phone Number with an AddressSid and a BundleSid": {
+    "prefix": "Twilio: Provision a Phone Number with an AddressSid and a BundleSid",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.incomingPhoneNumbers\n      .create({\n         addressSid: 'ADXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',\n         bundleSid: 'BUIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',\n         phoneNumber: '+15017122661'\n       })\n      .then(incoming_phone_number => console.log(incoming_phone_number.sid));\n"
+  },
+  "Provision a Phone Number with a Voice URL": {
+    "prefix": "Twilio: Provision a Phone Number with a Voice URL",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.incomingPhoneNumbers\n      .create({\n         voiceUrl: 'https://www.your-voice-url.com/example',\n         phoneNumber: '+15017122661'\n       })\n      .then(incoming_phone_number => console.log(incoming_phone_number.sid));\n"
+  },
+  "Provision a Phone Number with an SMS URL": {
+    "prefix": "Twilio: Provision a Phone Number with an SMS URL",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.incomingPhoneNumbers\n      .create({\n         smsUrl: 'https://www.your-sms-url.com/example',\n         phoneNumber: '+15017122661'\n       })\n      .then(incoming_phone_number => console.log(incoming_phone_number.sid));\n"
+  },
+  "Fetch Incoming Phone Number": {
+    "prefix": "Twilio: Fetch Incoming Phone Number",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.incomingPhoneNumbers('PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .fetch()\n  .then(incoming_phone_number => console.log(incoming_phone_number.friendlyName));\n"
+  },
+  "List all IncomingPhoneNumber resources for your account": {
+    "prefix": "Twilio: List all IncomingPhoneNumber resources for your account",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.incomingPhoneNumbers\n  .list({limit: 20})\n  .then(incomingPhoneNumbers => incomingPhoneNumbers.forEach(i => console.log(i.sid)));\n"
+  },
+  "Filter IncomingPhoneNumbers with exact match": {
+    "prefix": "Twilio: Filter IncomingPhoneNumbers with exact match",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.incomingPhoneNumbers\n  .list({phoneNumber: '+14158675310', limit: 20})\n  .then(incomingPhoneNumbers => incomingPhoneNumbers.forEach(i => console.log(i.sid)));\n"
+  },
+  "Filter IncomingPhoneNumbers with partial match": {
+    "prefix": "Twilio: Filter IncomingPhoneNumbers with partial match",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.incomingPhoneNumbers\n  .list({phoneNumber: '867', limit: 20})\n  .then(incomingPhoneNumbers => incomingPhoneNumbers.forEach(i => console.log(i.sid)));\n"
+  },
+  "Update IncomingPhoneNumber to include an AddressSid and an BundleSid": {
+    "prefix": "Twilio: Update IncomingPhoneNumber to include an AddressSid and an BundleSid",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.incomingPhoneNumbers('PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .update({\n     addressSid: 'ADXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',\n     bundleSid: 'BUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'\n   })\n  .then(incoming_phone_number => console.log(incoming_phone_number.friendlyName));\n"
+  },
+  "Update IncomingPhoneNumber to use a new Voice URL": {
+    "prefix": "Twilio: Update IncomingPhoneNumber to use a new Voice URL",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.incomingPhoneNumbers('PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .update({voiceUrl: 'https://www.your-new-voice-url.com/example'})\n  .then(incoming_phone_number => console.log(incoming_phone_number.friendlyName));\n"
+  },
+  "Update IncomingPhoneNumber to use a new SMS URL": {
+    "prefix": "Twilio: Update IncomingPhoneNumber to use a new SMS URL",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.incomingPhoneNumbers('PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')\n  .update({smsUrl: 'https://www.your-new-sms-url.com/example'})\n  .then(incoming_phone_number => console.log(incoming_phone_number.friendlyName));\n"
+  },
+  "Delete Incoming Phone Number": {
+    "prefix": "Twilio: Delete Incoming Phone Number",
+    "body": "// Download the helper library from https://www.twilio.com/docs/node/install\n// Find your Account SID and Auth Token at twilio.com/console\n// and set the environment variables. See http://twil.io/secure\nconst accountSid = process.env.TWILIO_ACCOUNT_SID;\nconst authToken = process.env.TWILIO_AUTH_TOKEN;\nconst client = require('twilio')(accountSid, authToken);\n\nclient.incomingPhoneNumbers('PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX').remove();\n"
+  },
+
+  
+  
+}
